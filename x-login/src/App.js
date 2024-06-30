@@ -28,7 +28,9 @@ function App() {
       <h1>Login Page</h1>
       
       {!submit ? (
+        
         <form onSubmit={handleSubmitBtn}>
+        {errorMessage&&(<p>Invalid username or password</p>)}
           <label>Username: </label>
           <input
             type="text"
@@ -48,7 +50,7 @@ function App() {
           />
           <br />
           <button type="submit">Submit</button>
-          {errorMessage&&(<p>Invalid username or password</p>)}
+          
         </form>
         
       ) : (
