@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [getUsername, setGetUsername] = useState("");
   const [getPassword, setGetPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState('')
   const [submit, setSubmit] = useState(false);
 
   const handleSubmitBtn = (e) => {
@@ -11,6 +12,7 @@ function App() {
     if (getUsername === "user" && getPassword === "password") {
       setSubmit(true);
     } else {
+      setErrorMessage('Invalid username or password')
       setSubmit(false);
     }
   };
@@ -24,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <h1>Login Page</h1>
+      
       {!submit ? (
         <form onSubmit={handleSubmitBtn}>
           <label>Username: </label>
@@ -45,9 +48,11 @@ function App() {
           />
           <br />
           <button type="submit">Submit</button>
+          {errorMessage&&(<p>Invalid username or password</p>)}
         </form>
+        
       ) : (
-        <p>Welcome, user!</p>
+       <p>Welcome, user!</p>
       )}
     </div>
   );
